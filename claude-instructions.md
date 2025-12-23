@@ -1,15 +1,16 @@
-# Claude Instructions for ShipFast SaaS Boilerplate
+# Claude Instructions for Zhang Dong Architecture Website
 
 ## Project Context
 
-You are working on **ShipFast**, a comprehensive Next.js SaaS boilerplate designed to help developers quickly launch their SaaS applications. This project includes authentication, payments, database management, email functionality, and a modern UI framework.
+You are working on the website for **Zhang Dong Architecture**, featuring residential design services by Zhang Dong and his team. The site showcases a homepage and content pages highlighting past architectural projects, serving customers in the Bay Area and beyond.
 
 ### Technology Stack
-- **Frontend**: Next.js 15 with App Router, React 19, Tailwind CSS, DaisyUI
-- **Backend**: Next.js API Routes, NextAuth v5 (beta), MongoDB with Mongoose
-- **Payments**: Stripe Checkout and Customer Portal
+- **Frontend**: Next.js 16 with App Router, React 19, Tailwind CSS, DaisyUI
+- **Backend**: Next.js API Routes, NextAuth v5 (beta), Supabase (primary database)
+- **Database**: Supabase (primary), with MongoDB/Mongoose options available
+- **Payments**: Stripe Checkout and Customer Portal (for potential future services)
 - **Email**: Resend for transactional emails
-- **Authentication**: NextAuth with Google OAuth and Email providers
+- **Authentication**: NextAuth with Google OAuth and Email providers (optional)
 - **Deployment**: Optimized for Vercel deployment
 
 ## Core Principles
