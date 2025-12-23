@@ -1,38 +1,16 @@
-import { Resend } from "resend";
-import config from "@/config";
+// This is a static portfolio site - email functionality is optional
+// This file is kept as a stub to prevent import errors
+// If you want to add email functionality later, install 'resend' package and uncomment the code below
 
-if (!process.env.RESEND_API_KEY) {
-  throw new Error("RESEND_API_KEY is not set");
-}
-
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-/**
- * Sends an email using the provided parameters.
- *
- * @async
- * @param {Object} params - The parameters for sending the email.
- * @param {string | string[]} params.to - The recipient's email address or an array of email addresses.
- * @param {string} params.subject - The subject of the email.
- * @param {string} params.text - The plain text content of the email.
- * @param {string} params.html - The HTML content of the email.
- * @param {string} [params.replyTo] - The email address to set as the "Reply-To" address.
- * @returns {Promise<Object>} A Promise that resolves with the email sending result data.
- */
 export const sendEmail = async ({ to, subject, text, html, replyTo }) => {
-  const { data, error } = await resend.emails.send({
-    from: config.resend.fromAdmin,
-    to,
-    subject,
-    text,
-    html,
-    ...(replyTo && { replyTo }),
-  });
-
-  if (error) {
-    console.error("Error sending email:", error.message);
-    throw error;
-  }
-
-  return data;
+  // For a static site, you can:
+  // 1. Log the email (for development)
+  // 2. Install 'resend' package and implement email sending
+  // 3. Use a third-party service (Mailchimp, ConvertKit, etc.)
+  
+  console.log("Email would be sent:", { to, subject, text, html, replyTo });
+  console.warn("Email functionality not implemented. Install 'resend' package to enable email sending.");
+  
+  // Return a mock response to prevent errors
+  return { id: "mock-email-id" };
 };

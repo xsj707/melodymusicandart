@@ -83,7 +83,11 @@ const config = {
     // OR you can just do this to use a custom color: main: "#f37055". HEX only.
     main: "hsl(var(--p))", // Uses the primary color from the DaisyUI theme dynamically
   },
-  // Auth configuration removed - authentication not needed for this portfolio website
+  // Auth configuration - stubbed for static portfolio site (auth not needed)
+  auth: {
+    loginUrl: "/", // Redirect to homepage if trying to access dashboard
+    callbackUrl: "/", // Redirect to homepage after "login" (not used on static site)
+  },
 };
 
 export default config;

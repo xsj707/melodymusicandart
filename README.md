@@ -10,9 +10,9 @@ This website showcases the architectural work of Zhang Dong and his team, featur
 
 - **Framework**: Next.js 16 with App Router
 - **Frontend**: React 19, Tailwind CSS, DaisyUI
-- **Backend**: Next.js API Routes
-- **Database**: None - all assets managed locally
-- **Authentication**: Single admin account (credentials in environment variables)
+- **Backend**: Minimal API Routes (for form submissions only)
+- **Database**: None - this is a static portfolio site
+- **Authentication**: None required - all pages are publicly accessible
 - **Content**: Static assets stored locally in `public/` directory
 
 ## Development
@@ -24,48 +24,37 @@ This website showcases the architectural work of Zhang Dong and his team, featur
 npm install
 ```
 
-2. Set up environment variables:
-```bash
-cp .env.example .env.local
-```
-
-3. Fill in your environment variables in `.env.local`
-
-4. Run the development server:
+2. Run the development server:
 ```bash
 npm run dev
 ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser
+3. Open [http://localhost:3000](http://localhost:3000) in your browser
 
 ## Environment Variables
 
-Required environment variables (set in `.env.local`):
+No environment variables are required for this static portfolio site.
 
-- `ADMIN_USERNAME` - Admin account username (default: "Zhang")
-- `ADMIN_PASSWORD` - Admin account password (default: "ZhangDongSecrete1", **change when deploying**)
-
-**Important**: Change the admin password in production to a secure value.
-
-Optional variables (for future features):
-- Various optional API keys for Stripe, Resend, etc. (see `.env.local` for full list)
+Optional variables (only if adding features in the future):
+- `NEXTAUTH_SECRET` - Optional secret for NextAuth (not required for static site)
+- `RESEND_API_KEY` - Optional email service API key (if adding contact form email functionality)
 
 ## Project Structure
 
 - `app/` - Next.js App Router pages and API routes
-  - `app/admin/` - Admin area (protected, requires authentication)
+  - `app/project/` - Individual project pages (each project has its own folder)
+  - `app/api/` - Minimal API routes (for form submissions only)
 - `components/` - React components
 - `libs/` - Utility libraries and helpers
 - `public/` - Static assets and images (all content managed locally)
 - `config.js` - Application configuration
 
-## Admin Area
+## Content Management
 
-The website includes an admin area accessible via `/admin` with a single admin account. Credentials are configured in `.env.local`:
-- Username: Set via `ADMIN_USERNAME` (default: "Zhang")
-- Password: Set via `ADMIN_PASSWORD` (default: "ZhangDongSecrete1")
-
-**Security Note**: Always change the admin password before deploying to production.
+This is a static portfolio site. All content is managed directly in the codebase:
+- **Projects**: Each project has its own folder under `app/project/[project-name]/` with `page.js` and `data.js`
+- **Images**: Store images in `public/images/` directory
+- **To add a new project**: Create a new folder with `page.js` and `data.js`, then import it in `libs/projects.js`
 
 ## Build
 
