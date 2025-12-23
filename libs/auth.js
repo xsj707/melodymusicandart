@@ -1,33 +1,34 @@
-import NextAuth from "next-auth"
-import config from "@/config"
+// Stub auth functions for static portfolio site
+// Authentication is not needed - all functions return null/empty to prevent errors
+// This avoids importing NextAuth which has dependencies that cause build issues
 
-// Minimal NextAuth configuration for static portfolio site
-// Authentication is not required, but NextAuth is kept to prevent errors
-// The route handler at /api/auth/[...nextauth]/route.js uses these handlers
-export const { handlers, auth, signIn, signOut } = NextAuth({
-  // Set any random key in .env.local (optional for static site)
-  secret: process.env.NEXTAUTH_SECRET || "static-site-secret",
-  
-  // No providers configured - this is a static portfolio site
-  providers: [],
-  
-  // No database adapter - static site doesn't need user storage
-  // Using JWT strategy for session management (no database required)
-  session: {
-    strategy: "jwt",
+// Stub auth function - always returns null (no session) for static site
+export async function auth() {
+  return null;
+}
+
+// Stub signIn function - not used on static site
+export async function signIn() {
+  return null;
+}
+
+// Stub signOut function - not used on static site
+export async function signOut() {
+  return null;
+}
+
+// Stub handlers for API routes - already handled in route.js files
+export const handlers = {
+  GET: async () => {
+    return new Response(JSON.stringify({ error: "Not found" }), {
+      status: 404,
+      headers: { "Content-Type": "application/json" },
+    });
   },
-  
-  callbacks: {
-    session: async ({ session, token }) => {
-      if (session?.user && token.sub) {
-        session.user.id = token.sub;
-      }
-      return session;
-    },
+  POST: async () => {
+    return new Response(JSON.stringify({ error: "Not found" }), {
+      status: 404,
+      headers: { "Content-Type": "application/json" },
+    });
   },
-  
-  theme: {
-    brandColor: config.colors.main,
-    logo: `https://${config.domainName}/logoAndName.png`,
-  },
-}); 
+}; 
