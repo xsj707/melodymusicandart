@@ -3,14 +3,13 @@
 You are an expert full-stack developer working on the website for Zhang Dong Architecture, featuring residential design services in the Bay Area and beyond.
 
 ## Project Overview
-- **Purpose**: Website showcasing residential design projects by Zhang Dong and his team
+- **Purpose**: Static portfolio website showcasing residential design projects by Zhang Dong and his team
 - **Tech Stack**: Next.js 16, React 19, Tailwind CSS
-- **Architecture**: App Router, API Routes, Server Components, Client Components
+- **Architecture**: App Router, Server Components, Client Components (minimal API routes)
 - **Design**: Benchmark design inspired by STL Architects (stlchicago.com)
 - **Content**: Homepage and project showcase pages featuring past architectural work
 - **Database**: None - all assets managed locally
-- **Authentication**: Single admin account (credentials stored in environment variables)
-- **Admin**: One admin account for managing content, accessed via admin area
+- **Authentication**: None required - this is a public static portfolio site
 - **UI**: Minimal, clean design with full-page images and high-contrast text
 
 ## Design Guidelines (Based on STL Architects Benchmark)
@@ -105,11 +104,9 @@ You are an expert full-stack developer working on the website for Zhang Dong Arc
 ### API Route Structure
 ```javascript
 import { NextResponse } from "next/server";
-import { auth } from "@/libs/auth";
 
 export async function POST(req) {
   try {
-    const session = await auth();
     const body = await req.json();
     
     // Validation
@@ -120,7 +117,7 @@ export async function POST(req) {
       );
     }
     
-    // Logic here
+    // Logic here (no authentication needed for static site)
     
     return NextResponse.json({ success: true });
   } catch (error) {
@@ -134,14 +131,16 @@ export async function POST(req) {
 ```
 
 ### Authentication
-- **No authentication required** - This is a public portfolio website
-- Admin area (if needed in the future) can use simple password protection
+- **No authentication required** - This is a static public portfolio website
 - All pages are publicly accessible
+- No user accounts, login, or admin areas needed
+- API routes (if any) are for simple form submissions or static data only
 
 ### Content Management
 - All assets (images, content) are managed locally in the `public/` directory
-- No database required - content is static or stored in local files
-- Admin area allows managing/editing content through file system or local storage
+- No database required - content is static and stored in local files
+- Content is edited directly in the codebase (project data files, page components)
+- To update content: edit files directly, commit, and deploy
 
 ## Best Practices
 
@@ -152,10 +151,10 @@ export async function POST(req) {
 - Provide user-friendly error messages
 
 ### Security
-- Validate all inputs in API routes
-- Use environment variables for sensitive data
+- Validate all inputs in API routes (if any)
+- Use environment variables for any sensitive data (though minimal for static site)
 - Implement proper CORS headers where needed
-- Sanitize user inputs before database operations
+- Since this is a static site, security concerns are minimal
 
 ### Performance
 - Use Server Components by default
@@ -172,15 +171,12 @@ export async function POST(req) {
 - Include proper accessibility attributes
 
 ## Environment Variables
-Required environment variables:
-- `ADMIN_USERNAME` - Admin account username (default: "Zhang")
-- `ADMIN_PASSWORD` - Admin account password (stored securely, change when deployed)
+No required environment variables for this static portfolio site.
 
-Optional environment variables (for future features):
-- `NEXTAUTH_SECRET` - Secret key for session management (if using NextAuth)
-- `NEXTAUTH_URL` - Application URL for authentication
-- `RESEND_API_KEY` - Resend email service API key (if using email features)
-- `STRIPE_PUBLIC_KEY`, `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET` - Stripe keys (if using payment features)
+Optional environment variables (only if adding features):
+- `RESEND_API_KEY` - Resend email service API key (if adding contact form email functionality)
+- `MONGODB_URI` - MongoDB connection string (only if adding database features in the future)
+- Note: NextAuth is installed but not actively used - the route handler exists to prevent errors, but authentication is not required
 
 ## Common Patterns
 
@@ -221,23 +217,28 @@ const ComponentName = () => {
 };
 ```
 
-### Admin Authentication Check
+### Static Content Pattern
 ```javascript
-import { cookies } from "next/headers";
+// Example: Project data file (app/project/[project-name]/data.js)
+export const project = {
+  title: "Project Name",
+  location: "Location",
+  type: "Residential",
+  description: "Project description...",
+  images: ["/images/project1.jpg", "/images/project2.jpg"],
+  team: "Team information...",
+};
 
-export async function isAdmin() {
-  const cookieStore = await cookies();
-  const sessionToken = cookieStore.get("admin-session");
-  // Verify session token matches admin credentials
-  return sessionToken?.value === process.env.ADMIN_PASSWORD;
-}
+// Example: Project page (app/project/[project-name]/page.js)
+import { project } from "./data";
 
-export async function requireAdmin() {
-  const admin = await isAdmin();
-  if (!admin) {
-    redirect("/admin/login");
-  }
-  return true;
+export default function ProjectPage() {
+  return (
+    <div>
+      <h1>{project.title}</h1>
+      {/* Render project content */}
+    </div>
+  );
 }
 ```
 
@@ -252,13 +253,16 @@ export async function requireAdmin() {
 - Use `npm run dev` for development
 - Use `npm run build` for production builds
 - Follow conventional commit messages
-- Test admin authentication flow
-- Verify admin credentials are set in `.env.local`
+- Test all pages render correctly
+- Verify images and assets load properly
+- Test responsive design on different screen sizes
 
 ## Deployment Considerations
-- Set `ADMIN_USERNAME` and `ADMIN_PASSWORD` environment variables (change from defaults when deploying)
 - Ensure all static assets are included in deployment
 - No database setup required
+- No authentication setup required
 - Configure domain in `config.js`
+- Optimize images before deployment for best performance
+- All content is static - no server-side rendering needed for content pages
 
 Remember to always check the existing codebase patterns before implementing new features to maintain consistency. 
