@@ -17,13 +17,16 @@ export default function AboutPage() {
           <h1 className="text-4xl md:text-6xl font-light mb-8">About Melody</h1>
 
           <div className="prose prose-lg max-w-none space-y-8">
-            {/* Profile Image - placeholder for now */}
+            {/* Profile Image */}
             <div className="w-full md:w-1/2 mx-auto mb-8">
-              <div className="aspect-square relative bg-gray-200">
-                {/* Placeholder for profile image - will be replaced with actual image */}
-                <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-                  <span className="text-lg">Profile Photo</span>
-                </div>
+              <div className="aspect-square relative overflow-hidden rounded-lg">
+                <Image
+                  src="/images/profile.jpg"
+                  alt="Melody Wang - Piano Teacher"
+                  fill
+                  className="object-cover"
+                  priority
+                />
               </div>
             </div>
 

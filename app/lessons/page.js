@@ -1,6 +1,7 @@
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata = {
   title: "Piano Lessons - Melody Wang Piano",
@@ -15,6 +16,16 @@ export default function LessonsPage() {
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-8 max-w-4xl">
           <h1 className="text-4xl md:text-6xl font-light mb-8">Piano Lessons</h1>
+
+          {/* Hero Image */}
+          <div className="relative w-full h-64 md:h-96 mb-12 rounded-lg overflow-hidden">
+            <Image
+              src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=1200&q=80"
+              alt="Piano lessons for children"
+              fill
+              className="object-cover"
+            />
+          </div>
 
           <div className="prose prose-lg max-w-none space-y-8">
             <section>

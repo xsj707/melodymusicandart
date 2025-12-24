@@ -19,14 +19,14 @@ export default function Navigation() {
 
   return (
     <>
-      {/* Menu button (+ icon) - hidden when menu is open */}
+      {/* Menu button (hamburger icon) - hidden when menu is open */}
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed top-4 right-4 z-50 text-black text-4xl font-light hover:opacity-70 transition-opacity pointer-events-auto"
+          className="text-black text-2xl font-light hover:opacity-70 transition-opacity pointer-events-auto"
           aria-label="Open menu"
         >
-          +
+          ☰
         </button>
       )}
 
@@ -45,7 +45,7 @@ export default function Navigation() {
               className="absolute top-4 right-4 z-50 text-black text-4xl font-light hover:opacity-70 transition-opacity pointer-events-auto"
               aria-label="Close menu"
             >
-              ×
+              ✕
             </button>
             <nav className="flex flex-col gap-8 text-left">
               {navLinks.map((link) => (
