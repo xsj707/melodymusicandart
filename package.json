@@ -1,7 +1,7 @@
 {
-  "name": "zhangdong-architecture",
+  "name": "melody-wang-piano",
   "version": "0.1.0",
-  "description": "Website for Zhang Dong Architecture - Residential design services in the Bay Area and beyond",
+  "description": "Website for Melody Wang Piano - Children's piano lessons in the Tri-Valley area (Pleasanton, Dublin, San Ramon)",
   "private": true,
   "scripts": {
     "dev": "next dev",

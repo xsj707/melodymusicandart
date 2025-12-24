@@ -1,11 +1,11 @@
 const config = {
   // REQUIRED
-  appName: "Zhang Dong Architecture",
+  appName: "Melody Wang Piano",
   // REQUIRED: a short description of your app for SEO tags (can be overwritten)
   appDescription:
-    "Residential design services by Zhang Dong and his team. Serving the Bay Area and beyond with custom architectural solutions.",
+    "Children's piano lessons in the Tri-Valley area. Expert piano instruction for kids in Pleasanton, Dublin, San Ramon, and surrounding areas.",
   // REQUIRED (no https://, not trialing slash at the end, just the naked domain)
-  domainName: "zhangdongarchitecture.com",
+  domainName: "melodywangpiano.com",
   crisp: {
     // Crisp website ID. IF YOU DON'T USE CRISP: just remove this => Then add a support email in this config file (resend.supportEmail) otherwise customer support won't work.
     id: "",
@@ -70,11 +70,11 @@ const config = {
   },
   resend: {
     // REQUIRED — Email 'From' field to be used when sending magic login links
-    fromNoReply: `Zhang Dong Architecture <noreply@zhangdongarchitecture.com>`,
+    fromNoReply: `Melody Wang Piano <noreply@melodywangpiano.com>`,
     // REQUIRED — Email 'From' field to be used when sending other emails, like abandoned carts, updates etc..
-    fromAdmin: `Zhang Dong <contact@zhangdongarchitecture.com>`,
+    fromAdmin: `Melody Wang <contact@melodywangpiano.com>`,
     // Email shown to customer if need support. Leave empty if not needed => if empty, set up Crisp above, otherwise you won't be able to offer customer support."
-    supportEmail: "contact@zhangdongarchitecture.com",
+    supportEmail: "contact@melodywangpiano.com",
   },
   colors: {
     // REQUIRED — The DaisyUI theme to use (added to the main layout.js). Leave blank for default (light & dark mode). If you any other theme than light/dark, you need to add it in config.tailwind.js in daisyui.themes.

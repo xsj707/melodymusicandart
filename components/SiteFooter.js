@@ -32,7 +32,7 @@ export default function SiteFooter() {
             {/* Social links */}
             <div className="flex gap-4">
               <a
-                href="#"
+                href="https://www.linkedin.com/in/zi-wang-a60395202"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
@@ -52,16 +52,16 @@ export default function SiteFooter() {
             {/* Contact info */}
             <div className="flex flex-col items-end gap-1 text-sm">
               <a
-                href="tel:+1234567890"
+                href="tel:+1-XXX-XXX-XXXX"
                 className="text-black hover:opacity-70 transition-opacity"
               >
-                T +1 (234) 567-890
+                T (XXX) XXX-XXXX
               </a>
               <a
-                href="mailto:contact@zhangdongarchitecture.com"
+                href="mailto:contact@melodywangpiano.com"
                 className="text-black hover:opacity-70 transition-opacity"
               >
-                contact@zhangdongarchitecture.com
+                contact@melodywangpiano.com
               </a>
             </div>
           </div>
